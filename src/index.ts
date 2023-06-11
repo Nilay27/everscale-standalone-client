@@ -1,4 +1,4 @@
-import init, * as nt from 'nekoton-wasm';
+import __wbg_init, * as nt from 'nekoton-wasm';
 import core from './core';
 
 let clientInitializationStarted = false;
@@ -10,7 +10,7 @@ const initializationPromise: Promise<void> = new Promise<void>((resolve, reject)
 core.ensureNekotonLoaded = (initInput?: nt.InitInput | Promise<nt.InitInput>): Promise<void> => {
   if (!clientInitializationStarted) {
     clientInitializationStarted = true;
-    init(initInput).then(notifyClientInitialized.resolve).catch(notifyClientInitialized.reject);
+    __wbg_init(initInput).then(notifyClientInitialized.resolve).catch(notifyClientInitialized.reject);
   }
   return initializationPromise;
 };
